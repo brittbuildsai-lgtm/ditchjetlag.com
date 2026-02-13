@@ -294,7 +294,7 @@ export default function DitchJetLag() {
       {/* ─── HERO ─── */}
       <section style={{
         position: "relative", overflow: "hidden",
-        padding: "150px 32px 80px",
+        padding: "150px 32px 40px",
         background: "linear-gradient(160deg, #FFF5EE 0%, #FFFBF7 30%, #F0F8FF 100%)",
       }}>
         {/* Decorative elements */}
