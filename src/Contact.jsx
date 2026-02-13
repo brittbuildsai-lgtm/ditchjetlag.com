@@ -1,4 +1,7 @@
+import usePageMeta from "./usePageMeta";
+
 export default function Contact() {
+  usePageMeta("Contact", "Get in touch with the DitchJetLag team for questions, feedback, or bug reports.");
   return (
     <>
       {/* ─── HEADER ─── */}

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import usePageMeta from "./usePageMeta";
 
 const CITIES = [
   { city: "New York", code: "JFK", tz: -5, country: "US", region: "North America" },
@@ -41,6 +42,7 @@ function formatTz(tz) {
 }
 
 export default function CityList() {
+  usePageMeta("City List", "All 30+ supported cities and their time zones available in the DitchJetLag calculator.");
   return (
     <>
       {/* ─── HEADER ─── */}

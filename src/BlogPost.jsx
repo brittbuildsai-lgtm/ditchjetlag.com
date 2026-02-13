@@ -2,10 +2,12 @@ import { useParams, Link } from "react-router-dom";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import posts from "./posts";
+import usePageMeta from "./usePageMeta";
 
 export default function BlogPost() {
   const { slug } = useParams();
   const post = posts.find(p => p.slug === slug);
+  usePageMeta(post?.title || "Post Not Found", post ? `Read "${post.title}" on DitchJetLag.` : undefined);
 
   if (!post) {
     return (

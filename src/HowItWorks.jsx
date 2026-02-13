@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import usePageMeta from "./usePageMeta";
 
 const STEPS = [
   {
@@ -59,6 +60,7 @@ const SCIENCE = [
 ];
 
 export default function HowItWorks() {
+  usePageMeta("How It Works", "Learn how the DitchJetLag calculator uses circadian science to build personalized jet lag recovery plans.");
   return (
     <>
       {/* ─── HEADER ─── */}
