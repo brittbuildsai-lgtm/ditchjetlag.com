@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import posts from "./posts";
+import usePageMeta from "./usePageMeta";
 
 export default function Blog() {
+  usePageMeta("Blog", "Guides, science, and travel tips to understand jet lag and beat it on your next trip.");
   return (
     <>
       {/* ─── HEADER ─── */}

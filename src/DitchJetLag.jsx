@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import usePageMeta from "./usePageMeta";
 
 /* ── City database ── */
 const CITIES = [
@@ -231,6 +232,7 @@ function CityPicker({ value, onChange, label }) {
 /*        MAIN COMPONENT       */
 /* ════════════════════════════ */
 export default function DitchJetLag() {
+  usePageMeta(null, "Free personalized jet lag recovery plan based on circadian rhythm science. Enter your cities and get a day-by-day plan to ditch jet lag for good.");
   const [from, setFrom] = useState(null);
   const [to, setTo] = useState(null);
   const [result, setResult] = useState(null);

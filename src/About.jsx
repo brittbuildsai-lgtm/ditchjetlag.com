@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import usePageMeta from "./usePageMeta";
 
 export default function About() {
+  usePageMeta("About", "Learn about DitchJetLag — a free jet lag calculator built for travelers, powered by circadian rhythm science.");
   return (
     <>
       {/* ─── HEADER ─── */}

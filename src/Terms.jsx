@@ -1,4 +1,7 @@
+import usePageMeta from "./usePageMeta";
+
 export default function Terms() {
+  usePageMeta("Terms & Conditions", "Terms and conditions for using the DitchJetLag jet lag calculator.");
   const sectionStyle = { marginBottom: 32 };
   const h2Style = {
     fontFamily: "'Playfair Display', serif", fontSize: 24, fontWeight: 600,
