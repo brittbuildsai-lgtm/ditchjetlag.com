@@ -3,6 +3,8 @@ import prepProtocol from "./3-day-prep-protocol.md?raw";
 import recoverIn24 from "./recover-from-jet-lag-in-24-hours.md?raw";
 import melatonin from "./melatonin-helper-or-hype.md?raw";
 import jetLagKids from "./jet-lag-with-kids.md?raw";
+import bestFoods from "./best-foods-to-beat-jet-lag.md?raw";
+
 const posts = [
   {
     slug: "why-flying-east-is-harder",
@@ -38,6 +40,13 @@ const posts = [
     tag: "Tips",
     mins: 4,
     content: recoverIn24,
+  },
+  {
+    slug: "best-foods-to-beat-jet-lag",
+    title: "Best Foods to Beat Jet Lag",
+    tag: "Nutrition",
+    mins: 6,
+    content: bestFoods,
   },
 ];
 

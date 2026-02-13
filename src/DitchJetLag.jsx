@@ -101,6 +101,7 @@ const ARTICLES = [
   { title: "Melatonin: Helper or Hype?", tag: "Health", mins: 6, slug: "melatonin-helper-or-hype" },
   { title: "Jet Lag With Kids: A Survival Guide", tag: "Family", mins: 7, slug: "jet-lag-with-kids" },
   { title: "How to Recover From Jet Lag in 24 Hours", tag: "Tips", mins: 4, slug: "recover-from-jet-lag-in-24-hours" },
+  { title: "Best Foods to Beat Jet Lag", tag: "Nutrition", mins: 6, slug: "best-foods-to-beat-jet-lag" },
 ];
 
 /* ── Plan generator ── */
