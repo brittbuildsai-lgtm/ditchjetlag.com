@@ -1,6 +1,9 @@
 import whyFlyingEast from "./why-flying-east-is-harder.md?raw";
 import prepProtocol from "./3-day-prep-protocol.md?raw";
 import recoverIn24 from "./recover-from-jet-lag-in-24-hours.md?raw";
+import melatonin from "./melatonin-helper-or-hype.md?raw";
+import jetLagKids from "./jet-lag-with-kids.md?raw";
+import earthyNames from "./earthy-names.md?raw";
 
 const posts = [
   {
@@ -18,11 +21,32 @@ const posts = [
     content: prepProtocol,
   },
   {
+    slug: "melatonin-helper-or-hype",
+    title: "Melatonin: Helper or Hype?",
+    tag: "Health",
+    mins: 6,
+    content: melatonin,
+  },
+  {
+    slug: "jet-lag-with-kids",
+    title: "Jet Lag With Kids: A Survival Guide",
+    tag: "Family",
+    mins: 7,
+    content: jetLagKids,
+  },
+  {
     slug: "recover-from-jet-lag-in-24-hours",
     title: "How to Recover From Jet Lag in 24 Hours",
     tag: "Tips",
     mins: 4,
     content: recoverIn24,
+  },
+  {
+    slug: "earthy-names",
+    title: "50 Earthy Names That Feel Grounded and Beautiful",
+    tag: "Names",
+    mins: 6,
+    content: earthyNames,
   },
 ];
 

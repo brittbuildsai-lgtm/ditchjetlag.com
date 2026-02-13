@@ -47,10 +47,10 @@ const TIPS = [
 const ARTICLES = [
   { title: "Why Flying East Wrecks You Harder Than Flying West", tag: "Science", mins: 5, slug: "why-flying-east-is-harder" },
   { title: "The 3-Day Prep Protocol Used by Airline Pilots", tag: "Guide", mins: 8, slug: "3-day-prep-protocol" },
-  { title: "Melatonin: Helper or Hype?", tag: "Health", mins: 6 },
-  { title: "Jet Lag With Kids: A Survival Guide", tag: "Family", mins: 7 },
+  { title: "Melatonin: Helper or Hype?", tag: "Health", mins: 6, slug: "melatonin-helper-or-hype" },
+  { title: "Jet Lag With Kids: A Survival Guide", tag: "Family", mins: 7, slug: "jet-lag-with-kids" },
   { title: "How to Recover From Jet Lag in 24 Hours", tag: "Tips", mins: 4, slug: "recover-from-jet-lag-in-24-hours" },
-  { title: "50 Earthy Names That Feel Grounded and Beautiful", tag: "Names", mins: 6 },
+  { title: "50 Earthy Names That Feel Grounded and Beautiful", tag: "Names", mins: 6, slug: "earthy-names" },
 ];
 
 /* ── Plan generator ── */
