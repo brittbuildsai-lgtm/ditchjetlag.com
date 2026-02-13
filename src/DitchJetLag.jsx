@@ -335,7 +335,7 @@ export default function DitchJetLag() {
       </section>
 
       {/* ─── CALCULATOR ─── */}
-      <section style={{ maxWidth: 760, margin: "0 auto", padding: "0 32px 80px", marginTop: -10 }}>
+      <section style={{ maxWidth: 760, margin: "0 auto", padding: "0 32px 48px", marginTop: -10 }}>
         <div style={{
           background: "white", border: "2px solid #FFE8DA", borderRadius: 28,
           padding: "40px 36px", boxShadow: "0 8px 32px rgba(255,107,53,0.06)",
@@ -460,15 +460,6 @@ export default function DitchJetLag() {
         </section>
       )}
 
-      {/* ─── AD SLOT ─── */}
-      <section style={{ maxWidth: 760, margin: "0 auto", padding: "0 32px 48px" }}>
-        <div style={{
-          padding: 20, borderRadius: 14, textAlign: "center",
-          border: "2px dashed #F0E8E0", color: "#D4C4B4",
-          fontFamily: "'Space Mono', monospace", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em",
-        }}>Advertisement</div>
-      </section>
-
       {/* ─── TIPS ─── */}
       <section style={{ maxWidth: 1140, margin: "0 auto", padding: "48px 32px 80px" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
@@ -493,13 +484,6 @@ export default function DitchJetLag() {
               <p style={{ fontSize: 14, color: "#8B7355", lineHeight: 1.65 }}>{tip.desc}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ─── AD SLOT ─── */}
-      <section style={{ maxWidth: 760, margin: "0 auto", padding: "0 32px 48px" }}>
-        <div style={{ padding: 20, borderRadius: 14, textAlign: "center", border: "2px dashed #F0E8E0", color: "#D4C4B4", fontFamily: "'Space Mono', monospace", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em" }}>
-          Advertisement
         </div>
       </section>
 
