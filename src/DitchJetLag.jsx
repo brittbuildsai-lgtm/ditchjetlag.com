@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 /* ── City database ── */
 const CITIES = [
@@ -44,11 +45,11 @@ const TIPS = [
 ];
 
 const ARTICLES = [
-  { title: "Why Flying East Wrecks You Harder Than Flying West", tag: "Science", mins: 5 },
-  { title: "The 3-Day Prep Protocol Used by Airline Pilots", tag: "Guide", mins: 8 },
+  { title: "Why Flying East Wrecks You Harder Than Flying West", tag: "Science", mins: 5, slug: "why-flying-east-is-harder" },
+  { title: "The 3-Day Prep Protocol Used by Airline Pilots", tag: "Guide", mins: 8, slug: "3-day-prep-protocol" },
   { title: "Melatonin: Helper or Hype?", tag: "Health", mins: 6 },
   { title: "Jet Lag With Kids: A Survival Guide", tag: "Family", mins: 7 },
-  { title: "How to Recover From Jet Lag in 24 Hours", tag: "Tips", mins: 4 },
+  { title: "How to Recover From Jet Lag in 24 Hours", tag: "Tips", mins: 4, slug: "recover-from-jet-lag-in-24-hours" },
   { title: "50 Earthy Names That Feel Grounded and Beautiful", tag: "Names", mins: 6 },
 ];
 
@@ -184,14 +185,7 @@ export default function DitchJetLag() {
   const [to, setTo] = useState(null);
   const [result, setResult] = useState(null);
   const [openDay, setOpenDay] = useState(null);
-  const [scrollY, setScrollY] = useState(0);
   const resultRef = useRef(null);
-
-  useEffect(() => {
-    const h = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", h, { passive: true });
-    return () => window.removeEventListener("scroll", h);
-  }, []);
 
   const handleCalc = () => {
     if (!from || !to) return;
@@ -206,91 +200,7 @@ export default function DitchJetLag() {
   const phaseLabel = { prep: "Prep", travel: "Travel", recovery: "Recovery" };
 
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFBF7", fontFamily: "'DM Sans', sans-serif", overflowX: "hidden" }}>
-      <style>{`
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
-        ::selection { background: #FF6B35; color: white; }
-
-        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        .fade-up { animation: fadeUp 0.7s ease forwards; opacity: 0; }
-
-        .btn-primary {
-          display: inline-flex; align-items: center; gap: 10px;
-          background: #FF6B35; color: white; border: none;
-          padding: 18px 36px; border-radius: 100px;
-          font-family: 'Space Mono', monospace;
-          font-size: 14px; font-weight: 700; cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 6px 20px rgba(255, 107, 53, 0.3);
-          text-transform: uppercase; letter-spacing: 0.06em;
-        }
-        .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 28px rgba(255, 107, 53, 0.35); }
-        .btn-primary:disabled { opacity: 0.35; cursor: not-allowed; transform: none; box-shadow: none; }
-
-        .btn-outline {
-          display: inline-flex; align-items: center; gap: 8px;
-          background: transparent; color: #FF6B35;
-          border: 2px solid #FFD4C0; padding: 16px 32px; border-radius: 100px;
-          font-family: 'Space Mono', monospace;
-          font-size: 13px; font-weight: 700; cursor: pointer;
-          transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.06em;
-        }
-        .btn-outline:hover { border-color: #FF6B35; background: #FFF5F0; transform: translateY(-2px); }
-
-        .nav-link { color: #8B7355; text-decoration: none; font-size: 14px; font-weight: 600; transition: color 0.2s; cursor: pointer; font-family: 'Space Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
-        .nav-link:hover { color: #FF6B35; }
-
-        footer a { color: #C4A99A; text-decoration: none; font-size: 13px; transition: color 0.2s; }
-        footer a:hover { color: #FF6B35; }
-
-        @media (max-width: 768px) {
-          .hero-title { font-size: 46px !important; }
-          .calc-row { flex-direction: column !important; }
-          .tips-grid { grid-template-columns: 1fr !important; }
-          .articles-grid { grid-template-columns: 1fr !important; }
-          .nav-mid { display: none !important; }
-          .footer-cols { flex-direction: column !important; }
-        }
-      `}</style>
-
-      {/* ─── NAV ─── */}
-      <nav style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-        padding: scrollY > 40 ? "10px 0" : "18px 0",
-        background: scrollY > 40 ? "rgba(255,251,247,0.92)" : "transparent",
-        backdropFilter: scrollY > 40 ? "blur(16px)" : "none",
-        borderBottom: scrollY > 40 ? "2px solid #FFE8DA" : "none",
-        transition: "all 0.35s ease",
-      }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <div style={{
-              width: 40, height: 40, borderRadius: "50%",
-              background: "#FF6B35", display: "flex", alignItems: "center", justifyContent: "center",
-              boxShadow: "0 4px 12px rgba(255,107,53,0.3)",
-            }}>
-              <span style={{ color: "white", fontSize: 18 }}>✈</span>
-            </div>
-            <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 22, fontWeight: 600, color: "#1A1A2E" }}>
-              ditch<span style={{ color: "#FF6B35" }}>jetlag</span>
-            </span>
-          </div>
-
-          <div className="nav-mid" style={{ display: "flex", gap: 28 }}>
-            <a href="#calculator" className="nav-link">Calculator</a>
-            <a href="#tips" className="nav-link">Tips</a>
-            <a href="#articles" className="nav-link">Articles</a>
-          </div>
-
-          <a href="#calculator" className="btn-primary" style={{ padding: "10px 22px", fontSize: 11, textDecoration: "none" }}>Ditch It →</a>
-        </div>
-      </nav>
-
+    <>
       {/* ─── HERO ─── */}
       <section style={{
         position: "relative", overflow: "hidden",
@@ -497,31 +407,40 @@ export default function DitchJetLag() {
               </h2>
               <p style={{ fontSize: 15, color: "#8B7355" }}>Guides, science, and travel tips.</p>
             </div>
-            <button className="btn-outline" style={{ padding: "12px 24px", fontSize: 11 }}>All Articles →</button>
+            <Link to="/blog" className="btn-outline" style={{ padding: "12px 24px", fontSize: 11, textDecoration: "none" }}>All Articles →</Link>
           </div>
 
           <div className="articles-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
-            {ARTICLES.map((a, i) => (
-              <div key={i} style={{
-                padding: "30px 24px", borderRadius: 22, background: "white",
-                border: "2px solid #F0E8E0", cursor: "pointer",
-                transition: "all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)",
-              }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.borderColor = "#FFD4C0"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.borderColor = "#F0E8E0"; }}
-              >
-                <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 14 }}>
-                  <span style={{
-                    padding: "4px 12px", borderRadius: 100, fontSize: 11, fontWeight: 700,
-                    fontFamily: "'Space Mono', monospace", textTransform: "uppercase",
-                    letterSpacing: "0.06em", background: "#FFF5F0", color: "#FF6B35",
-                  }}>{a.tag}</span>
-                  <span style={{ fontSize: 12, color: "#C4A99A" }}>{a.mins} min</span>
+            {ARTICLES.map((a, i) => {
+              const card = (
+                <div style={{
+                  padding: "30px 24px", borderRadius: 22, background: "white",
+                  border: "2px solid #F0E8E0", cursor: a.slug ? "pointer" : "default",
+                  transition: "all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  height: "100%",
+                }}
+                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.borderColor = "#FFD4C0"; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.borderColor = "#F0E8E0"; }}
+                >
+                  <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 14 }}>
+                    <span style={{
+                      padding: "4px 12px", borderRadius: 100, fontSize: 11, fontWeight: 700,
+                      fontFamily: "'Space Mono', monospace", textTransform: "uppercase",
+                      letterSpacing: "0.06em", background: "#FFF5F0", color: "#FF6B35",
+                    }}>{a.tag}</span>
+                    <span style={{ fontSize: 12, color: "#C4A99A" }}>{a.mins} min</span>
+                  </div>
+                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 19, fontWeight: 600, color: "#1A1A2E", lineHeight: 1.35 }}>{a.title}</h3>
+                  <div style={{ marginTop: 18, fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700, color: "#FF6B35", textTransform: "uppercase", letterSpacing: "0.06em" }}>Read →</div>
                 </div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 19, fontWeight: 600, color: "#1A1A2E", lineHeight: 1.35 }}>{a.title}</h3>
-                <div style={{ marginTop: 18, fontFamily: "'Space Mono', monospace", fontSize: 12, fontWeight: 700, color: "#FF6B35", textTransform: "uppercase", letterSpacing: "0.06em" }}>Read →</div>
-              </div>
-            ))}
+              );
+
+              return a.slug ? (
+                <Link key={i} to={`/blog/${a.slug}`} style={{ textDecoration: "none" }}>{card}</Link>
+              ) : (
+                <div key={i}>{card}</div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -542,35 +461,6 @@ export default function DitchJetLag() {
           </div>
         ))}
       </section>
-
-      {/* ─── FOOTER ─── */}
-      <footer style={{ borderTop: "2px solid #F0E8E0", padding: "48px 32px 32px", background: "#FFFBF7" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-          <div className="footer-cols" style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 40, marginBottom: 40 }}>
-            <div style={{ maxWidth: 260 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-                <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#FF6B35", display: "flex", alignItems: "center", justifyContent: "center", color: "white", fontSize: 14 }}>✈</div>
-                <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 19, fontWeight: 600, color: "#1A1A2E" }}>ditch<span style={{ color: "#FF6B35" }}>jetlag</span></span>
-              </div>
-              <p style={{ fontSize: 13, color: "#C4A99A", lineHeight: 1.7 }}>Free jet lag calculator and recovery plans. Science-backed, always free. ditchjetlag.com</p>
-            </div>
-            {[
-              { title: "Tool", links: ["Calculator", "How It Works", "City List"] },
-              { title: "Learn", links: ["Jet Lag Science", "Travel Tips", "All Articles"] },
-              { title: "Company", links: ["About", "Contact", "Privacy", "Terms"] },
-            ].map((col, i) => (
-              <div key={i}>
-                <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em", color: "#FF6B35", fontWeight: 700, marginBottom: 14 }}>{col.title}</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>{col.links.map(l => <a key={l} href="#">{l}</a>)}</div>
-              </div>
-            ))}
-          </div>
-          <div style={{ borderTop: "2px solid #F0E8E0", paddingTop: 20, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-            <span style={{ fontSize: 12, color: "#D4C4B4" }}>© 2026 DitchJetLag. Not medical advice.</span>
-            <div style={{ display: "flex", gap: 18 }}>{["Twitter", "Instagram", "Pinterest"].map(s => <a key={s} href="#">{s}</a>)}</div>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </>
   );
 }
