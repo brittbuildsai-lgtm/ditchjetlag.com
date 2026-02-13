@@ -133,7 +133,7 @@ export default function Layout() {
             {[
               { title: "Tool", links: [{ label: "Calculator", to: "/#calculator" }, { label: "How It Works", to: "/#tips" }, { label: "City List", to: "/#calculator" }] },
               { title: "Learn", links: [{ label: "Jet Lag Science", to: "/blog" }, { label: "Travel Tips", to: "/blog" }, { label: "All Articles", to: "/blog" }] },
-              { title: "Company", links: [{ label: "About", to: "#" }, { label: "Contact", to: "#" }, { label: "Privacy", to: "#" }, { label: "Terms", to: "#" }] },
+              { title: "Company", links: [{ label: "About", to: "/about" }, { label: "Contact", to: "/contact" }, { label: "Terms", to: "/terms" }] },
             ].map((col, i) => (
               <div key={i}>
                 <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em", color: "#FF6B35", fontWeight: 700, marginBottom: 14 }}>{col.title}</div>
@@ -149,7 +149,7 @@ export default function Layout() {
           </div>
           <div style={{ borderTop: "2px solid #F0E8E0", paddingTop: 20, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
             <span style={{ fontSize: 12, color: "#D4C4B4" }}>© 2026 DitchJetLag. Not medical advice.</span>
-            <div style={{ display: "flex", gap: 18 }}>{["Twitter", "Instagram", "Pinterest"].map(s => <a key={s} href="#" style={{ color: "#C4A99A", textDecoration: "none", fontSize: 13, transition: "color 0.2s" }}>{s}</a>)}</div>
+            <div style={{ display: "flex", gap: 18 }}>{["Instagram", "Pinterest"].map(s => <a key={s} href="#" style={{ color: "#C4A99A", textDecoration: "none", fontSize: 13, transition: "color 0.2s" }}>{s}</a>)}</div>
           </div>
         </div>
       </footer>
