@@ -267,7 +267,7 @@ export default function DitchJetLag() {
         borderBottom: scrollY > 40 ? "2px solid #FFE8DA" : "none",
         transition: "all 0.35s ease",
       }}>
-        <div style={{ maxWidth: 1140, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{
               width: 40, height: 40, borderRadius: "50%",
@@ -294,7 +294,7 @@ export default function DitchJetLag() {
       {/* ─── HERO ─── */}
       <section style={{
         position: "relative", overflow: "hidden",
-        padding: "150px 32px 40px",
+        padding: "150px 32px 60px",
         background: "linear-gradient(160deg, #FFF5EE 0%, #FFFBF7 30%, #F0F8FF 100%)",
       }}>
         {/* Decorative elements */}
@@ -335,7 +335,7 @@ export default function DitchJetLag() {
       </section>
 
       {/* ─── CALCULATOR ─── */}
-      <section id="calculator" style={{ maxWidth: 760, margin: "0 auto", padding: "32px 32px 48px", scrollMarginTop: 80 }}>
+      <section id="calculator" style={{ maxWidth: 760, margin: "0 auto", padding: "48px 32px 48px", scrollMarginTop: 80 }}>
         <div style={{
           background: "white", border: "2px solid #FFE8DA", borderRadius: 28,
           padding: "40px 36px", boxShadow: "0 8px 32px rgba(255,107,53,0.06)",
@@ -461,7 +461,7 @@ export default function DitchJetLag() {
       )}
 
       {/* ─── TIPS ─── */}
-      <section id="tips" style={{ maxWidth: 1140, margin: "0 auto", padding: "48px 32px 80px", scrollMarginTop: 80 }}>
+      <section id="tips" style={{ maxWidth: 1200, margin: "0 auto", padding: "48px 32px 80px", scrollMarginTop: 80 }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 40, fontWeight: 600, color: "#1A1A2E", marginBottom: 10 }}>
             The science of <span style={{ fontStyle: "italic", color: "#FF6B35" }}>ditching the lag</span>
@@ -489,7 +489,7 @@ export default function DitchJetLag() {
 
       {/* ─── ARTICLES ─── */}
       <section id="articles" style={{ padding: "48px 32px 80px", background: "linear-gradient(180deg, #FFFBF7, #FFF5EE 50%, #FFFBF7)", scrollMarginTop: 80 }}>
-        <div style={{ maxWidth: 1140, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 40, flexWrap: "wrap", gap: 16 }}>
             <div>
               <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 36, fontWeight: 600, color: "#1A1A2E", marginBottom: 6 }}>
@@ -545,7 +545,7 @@ export default function DitchJetLag() {
 
       {/* ─── FOOTER ─── */}
       <footer style={{ borderTop: "2px solid #F0E8E0", padding: "48px 32px 32px", background: "#FFFBF7" }}>
-        <div style={{ maxWidth: 1140, margin: "0 auto" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
           <div className="footer-cols" style={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 40, marginBottom: 40 }}>
             <div style={{ maxWidth: 260 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
