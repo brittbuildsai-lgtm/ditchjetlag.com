@@ -185,6 +185,7 @@ export default function DitchJetLag() {
   const [to, setTo] = useState(null);
   const [result, setResult] = useState(null);
   const [openDay, setOpenDay] = useState(null);
+  const [openFaq, setOpenFaq] = useState(null);
   const resultRef = useRef(null);
 
   const handleCalc = () => {
@@ -455,9 +456,25 @@ export default function DitchJetLag() {
           { q: "Should I take melatonin?", a: "Low-dose melatonin (0.5-3mg) taken 30 minutes before your target bedtime can help. But timing matters — wrong timing can make jet lag worse. It works best as part of a full strategy. Consult your doctor first." },
           { q: "Is this free?", a: "Completely free, forever. No account needed, no upsell. Just enter your cities and get your plan." },
         ].map((f, i) => (
-          <div key={i} style={{ padding: "22px 0", borderBottom: i < 4 ? "2px solid #F0E8E0" : "none" }}>
-            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 19, fontWeight: 600, color: "#1A1A2E", marginBottom: 10 }}>{f.q}</h3>
-            <p style={{ fontSize: 14, color: "#8B7355", lineHeight: 1.7 }}>{f.a}</p>
+          <div key={i} style={{
+            borderBottom: i < 4 ? "2px solid #F0E8E0" : "none",
+            overflow: "hidden",
+          }}>
+            <button onClick={() => setOpenFaq(openFaq === i ? null : i)} style={{
+              width: "100%", padding: "22px 0", background: "none", border: "none",
+              cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center",
+              textAlign: "left",
+            }}>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 19, fontWeight: 600, color: "#1A1A2E", margin: 0 }}>{f.q}</h3>
+              <span style={{
+                fontSize: 18, color: "#FF6B35", flexShrink: 0, marginLeft: 16,
+                transform: openFaq === i ? "rotate(180deg)" : "rotate(0)",
+                transition: "transform 0.3s ease",
+              }}>▾</span>
+            </button>
+            {openFaq === i && (
+              <p style={{ fontSize: 14, color: "#8B7355", lineHeight: 1.7, paddingBottom: 22 }}>{f.a}</p>
+            )}
           </div>
         ))}
       </section>
