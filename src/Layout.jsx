@@ -1,14 +1,34 @@
-import { useState, useEffect } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { useState, useEffect, useCallback } from "react";
+import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function Layout() {
   const [scrollY, setScrollY] = useState(0);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const h = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", h, { passive: true });
     return () => window.removeEventListener("scroll", h);
   }, []);
+
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      setTimeout(() => {
+        document.getElementById(location.state.scrollTo)?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [location.state]);
+
+  const scrollToSection = useCallback((id) => (e) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/", { state: { scrollTo: id } });
+    }
+  }, [location.pathname, navigate]);
 
   return (
     <div style={{ minHeight: "100vh", background: "#FFFBF7", fontFamily: "'DM Sans', sans-serif", overflowX: "hidden" }}>
@@ -54,7 +74,8 @@ export default function Layout() {
 
         @media (max-width: 768px) {
           .hero-title { font-size: 46px !important; }
-          .calc-row { flex-direction: column !important; }
+          .calc-row { flex-direction: column !important; align-items: stretch !important; }
+          .calc-row .swap-btn { align-self: center !important; }
           .tips-grid { grid-template-columns: 1fr !important; }
           .articles-grid { grid-template-columns: 1fr !important; }
           .nav-mid { display: none !important; }
@@ -86,12 +107,12 @@ export default function Layout() {
           </Link>
 
           <div className="nav-mid" style={{ display: "flex", gap: 28 }}>
-            <Link to="/#calculator" className="nav-link">Calculator</Link>
-            <Link to="/#tips" className="nav-link">Tips</Link>
+            <a href="/#calculator" className="nav-link" onClick={scrollToSection("calculator")}>Calculator</a>
+            <a href="/#tips" className="nav-link" onClick={scrollToSection("tips")}>Tips</a>
             <Link to="/blog" className="nav-link">Blog</Link>
           </div>
 
-          <Link to="/#calculator" className="btn-primary" style={{ padding: "10px 22px", fontSize: 11, textDecoration: "none" }}>Ditch It →</Link>
+          <a href="/#calculator" className="btn-primary" onClick={scrollToSection("calculator")} style={{ padding: "10px 22px", fontSize: 11, textDecoration: "none" }}>Ditch It →</a>
         </div>
       </nav>
 
@@ -116,7 +137,13 @@ export default function Layout() {
             ].map((col, i) => (
               <div key={i}>
                 <div style={{ fontFamily: "'Space Mono', monospace", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.1em", color: "#FF6B35", fontWeight: 700, marginBottom: 14 }}>{col.title}</div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>{col.links.map(l => <Link key={l.label} to={l.to} style={{ color: "#C4A99A", textDecoration: "none", fontSize: 13, transition: "color 0.2s" }}>{l.label}</Link>)}</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>{col.links.map(l => {
+                  const hashMatch = l.to.match(/^\/#(.+)/);
+                  if (hashMatch) {
+                    return <a key={l.label} href={l.to} onClick={scrollToSection(hashMatch[1])} style={{ color: "#C4A99A", textDecoration: "none", fontSize: 13, transition: "color 0.2s", cursor: "pointer" }}>{l.label}</a>;
+                  }
+                  return <Link key={l.label} to={l.to} style={{ color: "#C4A99A", textDecoration: "none", fontSize: 13, transition: "color 0.2s" }}>{l.label}</Link>;
+                })}</div>
               </div>
             ))}
           </div>

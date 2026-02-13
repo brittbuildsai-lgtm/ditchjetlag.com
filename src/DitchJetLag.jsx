@@ -303,7 +303,7 @@ export default function DitchJetLag() {
         }}>
           <div className="calc-row" style={{ display: "flex", gap: 16, marginBottom: 24, alignItems: "flex-end" }}>
             <CityPicker label="From" value={from} onChange={setFrom} />
-            <button onClick={() => { const t = from; setFrom(to); setTo(t); }} style={{
+            <button className="swap-btn" onClick={() => { const t = from; setFrom(to); setTo(t); }} style={{
               width: 48, height: 48, borderRadius: 14, border: "2px solid #FFD4C0",
               background: "white", color: "#FF6B35", fontSize: 20, cursor: "pointer",
               display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
