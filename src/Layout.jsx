@@ -131,7 +131,7 @@ export default function Layout() {
               <p style={{ fontSize: 13, color: "#C4A99A", lineHeight: 1.7 }}>Free jet lag calculator and recovery plans. Science-backed, always free. ditchjetlag.com</p>
             </div>
             {[
-              { title: "Tool", links: [{ label: "Calculator", to: "/#calculator" }, { label: "How It Works", to: "/#tips" }, { label: "City List", to: "/#calculator" }] },
+              { title: "Tool", links: [{ label: "Calculator", to: "/#calculator" }, { label: "How It Works", to: "/how-it-works" }, { label: "City List", to: "/cities" }] },
               { title: "Learn", links: [{ label: "Jet Lag Science", to: "/blog" }, { label: "Travel Tips", to: "/blog" }, { label: "All Articles", to: "/blog" }] },
               { title: "Company", links: [{ label: "About", to: "/about" }, { label: "Contact", to: "/contact" }, { label: "Terms", to: "/terms" }] },
             ].map((col, i) => (
