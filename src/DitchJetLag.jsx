@@ -101,7 +101,6 @@ const ARTICLES = [
   { title: "Melatonin: Helper or Hype?", tag: "Health", mins: 6, slug: "melatonin-helper-or-hype" },
   { title: "Jet Lag With Kids: A Survival Guide", tag: "Family", mins: 7, slug: "jet-lag-with-kids" },
   { title: "How to Recover From Jet Lag in 24 Hours", tag: "Tips", mins: 4, slug: "recover-from-jet-lag-in-24-hours" },
-  { title: "50 Earthy Names That Feel Grounded and Beautiful", tag: "Names", mins: 6, slug: "earthy-names" },
 ];
 
 /* ── Plan generator ── */
