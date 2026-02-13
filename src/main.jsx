@@ -8,6 +8,8 @@ import BlogPost from "./BlogPost";
 import About from "./About";
 import Terms from "./Terms";
 import Contact from "./Contact";
+import HowItWorks from "./HowItWorks";
+import CityList from "./CityList";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -20,6 +22,8 @@ createRoot(document.getElementById("root")).render(
           <Route path="/about" element={<About />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/cities" element={<CityList />} />
         </Route>
       </Routes>
     </BrowserRouter>
