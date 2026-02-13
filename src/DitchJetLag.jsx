@@ -335,7 +335,7 @@ export default function DitchJetLag() {
       </section>
 
       {/* ─── CALCULATOR ─── */}
-      <section style={{ maxWidth: 760, margin: "0 auto", padding: "0 32px 48px", marginTop: -10 }}>
+      <section style={{ maxWidth: 760, margin: "0 auto", padding: "32px 32px 48px" }}>
         <div style={{
           background: "white", border: "2px solid #FFE8DA", borderRadius: 28,
           padding: "40px 36px", boxShadow: "0 8px 32px rgba(255,107,53,0.06)",
