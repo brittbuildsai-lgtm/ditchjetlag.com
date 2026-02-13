@@ -35,13 +35,63 @@ const CITIES = [
   { city: "Lisbon", code: "LIS", tz: 0, country: "PT" },
 ];
 
+const TipIcons = {
+  sun: (color) => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="5" />
+      <line x1="12" y1="1" x2="12" y2="3" />
+      <line x1="12" y1="21" x2="12" y2="23" />
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+      <line x1="1" y1="12" x2="3" y2="12" />
+      <line x1="21" y1="12" x2="23" y2="12" />
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+    </svg>
+  ),
+  moon: (color) => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </svg>
+  ),
+  droplet: (color) => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+    </svg>
+  ),
+  coffee: (color) => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+      <line x1="6" y1="1" x2="6" y2="4" />
+      <line x1="10" y1="1" x2="10" y2="4" />
+      <line x1="14" y1="1" x2="14" y2="4" />
+    </svg>
+  ),
+  utensils: (color) => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2" />
+      <path d="M7 2v20" />
+      <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7" />
+    </svg>
+  ),
+  walking: (color) => (
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="13" cy="4" r="2" />
+      <path d="M7 21l3-4" />
+      <path d="M16 21l-2-4-3-3 1-6" />
+      <path d="M6 12l2-3 4-1 3 3" />
+    </svg>
+  ),
+};
+
 const TIPS = [
-  { icon: "☀️", title: "Light is everything", desc: "Strategic light exposure at the right time is the #1 tool for resetting your internal clock. More effective than any supplement.", color: "#FF6B35" },
-  { icon: "😴", title: "Pre-shift your sleep", desc: "Start moving your bedtime 30 minutes per day toward your destination schedule before departure.", color: "#4ECDC4" },
-  { icon: "🥤", title: "Hydrate aggressively", desc: "Cabin air dehydrates you fast and makes jet lag worse. 8oz of water per hour of flight is the target.", color: "#2B6CB0" },
-  { icon: "☕", title: "Time your caffeine", desc: "Coffee is a tool, not a habit. Use it to stay alert in destination daytime, stop 8 hours before target bedtime.", color: "#E85D75" },
-  { icon: "🍜", title: "Eat on local time", desc: "Your gut has its own circadian clock. Eating meals on destination time helps your whole system recalibrate.", color: "#6C63FF" },
-  { icon: "🚶", title: "Move your body", desc: "Walk the cabin every 2 hours in-flight. On arrival, morning exercise in sunlight is the ultimate reset combo.", color: "#38B2AC" },
+  { icon: "sun", title: "Light is everything", desc: "Strategic light exposure at the right time is the #1 tool for resetting your internal clock. More effective than any supplement.", color: "#FF6B35" },
+  { icon: "moon", title: "Pre-shift your sleep", desc: "Start moving your bedtime 30 minutes per day toward your destination schedule before departure.", color: "#4ECDC4" },
+  { icon: "droplet", title: "Hydrate aggressively", desc: "Cabin air dehydrates you fast and makes jet lag worse. 8oz of water per hour of flight is the target.", color: "#2B6CB0" },
+  { icon: "coffee", title: "Time your caffeine", desc: "Coffee is a tool, not a habit. Use it to stay alert in destination daytime, stop 8 hours before target bedtime.", color: "#E85D75" },
+  { icon: "utensils", title: "Eat on local time", desc: "Your gut has its own circadian clock. Eating meals on destination time helps your whole system recalibrate.", color: "#6C63FF" },
+  { icon: "walking", title: "Move your body", desc: "Walk the cabin every 2 hours in-flight. On arrival, morning exercise in sunlight is the ultimate reset combo.", color: "#38B2AC" },
 ];
 
 const ARTICLES = [
@@ -390,7 +440,7 @@ export default function DitchJetLag() {
             onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.borderColor = tip.color; e.currentTarget.style.boxShadow = `0 16px 32px ${tip.color}15`; }}
             onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.borderColor = "#F0E8E0"; e.currentTarget.style.boxShadow = "none"; }}
             >
-              <div style={{ fontSize: 32, marginBottom: 16 }}>{tip.icon}</div>
+              <div style={{ marginBottom: 16 }}>{TipIcons[tip.icon](tip.color)}</div>
               <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 20, fontWeight: 600, color: "#1A1A2E", marginBottom: 10 }}>{tip.title}</h3>
               <p style={{ fontSize: 14, color: "#8B7355", lineHeight: 1.65 }}>{tip.desc}</p>
             </div>
