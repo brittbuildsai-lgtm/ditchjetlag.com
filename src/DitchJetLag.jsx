@@ -282,12 +282,12 @@ export default function DitchJetLag() {
           </div>
 
           <div className="nav-mid" style={{ display: "flex", gap: 28 }}>
-            <span className="nav-link">Calculator</span>
-            <span className="nav-link">Tips</span>
-            <span className="nav-link">Articles</span>
+            <a href="#calculator" className="nav-link">Calculator</a>
+            <a href="#tips" className="nav-link">Tips</a>
+            <a href="#articles" className="nav-link">Articles</a>
           </div>
 
-          <button className="btn-primary" style={{ padding: "10px 22px", fontSize: 11 }}>Ditch It →</button>
+          <a href="#calculator" className="btn-primary" style={{ padding: "10px 22px", fontSize: 11, textDecoration: "none" }}>Ditch It →</a>
         </div>
       </nav>
 
@@ -335,7 +335,7 @@ export default function DitchJetLag() {
       </section>
 
       {/* ─── CALCULATOR ─── */}
-      <section style={{ maxWidth: 760, margin: "0 auto", padding: "32px 32px 48px" }}>
+      <section id="calculator" style={{ maxWidth: 760, margin: "0 auto", padding: "32px 32px 48px", scrollMarginTop: 80 }}>
         <div style={{
           background: "white", border: "2px solid #FFE8DA", borderRadius: 28,
           padding: "40px 36px", boxShadow: "0 8px 32px rgba(255,107,53,0.06)",
@@ -461,7 +461,7 @@ export default function DitchJetLag() {
       )}
 
       {/* ─── TIPS ─── */}
-      <section style={{ maxWidth: 1140, margin: "0 auto", padding: "48px 32px 80px" }}>
+      <section id="tips" style={{ maxWidth: 1140, margin: "0 auto", padding: "48px 32px 80px", scrollMarginTop: 80 }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 40, fontWeight: 600, color: "#1A1A2E", marginBottom: 10 }}>
             The science of <span style={{ fontStyle: "italic", color: "#FF6B35" }}>ditching the lag</span>
@@ -488,7 +488,7 @@ export default function DitchJetLag() {
       </section>
 
       {/* ─── ARTICLES ─── */}
-      <section style={{ padding: "48px 32px 80px", background: "linear-gradient(180deg, #FFFBF7, #FFF5EE 50%, #FFFBF7)" }}>
+      <section id="articles" style={{ padding: "48px 32px 80px", background: "linear-gradient(180deg, #FFFBF7, #FFF5EE 50%, #FFFBF7)", scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 1140, margin: "0 auto" }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 40, flexWrap: "wrap", gap: 16 }}>
             <div>
